@@ -12,7 +12,9 @@
   },
   "versions": {
     "0.1.2": {
-      "changelog": "* Switched to the correct repo structure",
+      "changelog": {
+        "text": "* Switched to the correct repo structure"
+      },
       "download": {
         "url": "https://github.com/js6pak/ValidUser/releases/download/0.1.2/ValidUser.zip",
         "sha1": "908453e19dc96785a07884c8c435df17d754d6b8"

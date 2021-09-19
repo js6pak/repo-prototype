@@ -1,0 +1,28 @@
+{
+  "name": "TapTap",
+  "description": "Double tap someone else\u0027s message to quick reply, double tap your own to quick edit",
+  "authors": [
+    {
+      "id": 343383572805058560,
+      "name": "Vendicated"
+    }
+  ],
+  "links": {},
+  "versions": {
+    "1.0.6": {
+      "download": {
+        "url": "https://raw.githubusercontent.com/Vendicated/AliucordPlugins/98b9477298ea333159c14cd1d56767655d2a972e/TapTap.zip",
+        "sha1": "2de6c11c672a3a549e057e80f5e014d782162e4d"
+      }
+    },
+    "1.1.0": {
+      "changelog": {
+        "text": "# 1.1.0\n* Automatically open keyboard when replying to a message. Disabled by default, toggleable via settings"
+      },
+      "download": {
+        "url": "https://raw.githubusercontent.com/Vendicated/AliucordPlugins/85cddd23fd010426613a3924327d1bf341301416/TapTap.zip",
+        "sha1": "22121680eb845112bbff8fb1c10a9ef3362cd8e3"
+      }
+    }
+  }
+}
