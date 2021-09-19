@@ -1,0 +1,22 @@
+{
+  "name": "WhoReacted",
+  "description": "See the avatars of the users who reacted to a message.",
+  "authors": [
+    {
+      "id": 141580516380901376,
+      "name": "6pak"
+    }
+  ],
+  "links": {
+    "github": "https://github.com/js6pak/WhoReacted"
+  },
+  "versions": {
+    "0.2.0": {
+      "changelog": "* Improved the chance of surviving discord updates\n* Added user count setting",
+      "download": {
+        "url": "https://github.com/js6pak/WhoReacted/releases/download/0.2.0/WhoReacted.zip",
+        "sha1": "d127302d8d922f0b8481414f32d06af7ccb508c9"
+      }
+    }
+  }
+}
