@@ -14,12 +14,31 @@ import { context, getOctokit } from "@actions/github";
     }
 
     const { data: pullRequest } = await github.rest.pulls.get({
-      owner: context.repo.owner,
-      repo: context.repo.repo,
+      ...context.repo,
       pull_number: prNumber,
     });
 
-    core.info(JSON.stringify(pullRequest));
+    const { data: comments } = await github.rest.issues.listComments({
+      ...context.repo,
+      issue_number: pullRequest.number,
+    });
+
+    let comment = comments.find((c) => c.user?.login === "github-actions[bot]");
+
+    if (comment == null) {
+      const response = await github.rest.issues.createComment({
+        ...context.repo,
+        issue_number: pullRequest.number,
+        body: "Running...",
+      });
+      comment = response.data;
+    }
+
+    await github.rest.issues.updateComment({
+      ...context.repo,
+      comment_id: comment.id,
+      body: "updated",
+    });
   } catch (error) {
     core.setFailed(error as Error);
   }
