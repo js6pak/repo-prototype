@@ -48,12 +48,13 @@ const github_1 = __nccwpck_require__(5438);
             return;
         }
         const { data: pullRequest } = yield github.rest.pulls.get(Object.assign(Object.assign({}, github_1.context.repo), { pull_number: prNumber }));
-        // const { data: comments } = await github.rest.issues.listComments({
-        //   ...context.repo,
-        //   issue_number: pullRequest.number,
-        // });
-        // let comment = comments.filter(comment => comment.)
-        yield github.rest.issues.createComment(Object.assign(Object.assign({}, github_1.context.repo), { issue_number: pullRequest.number, body: "hello" }));
+        const { data: comments } = yield github.rest.issues.listComments(Object.assign(Object.assign({}, github_1.context.repo), { issue_number: pullRequest.number }));
+        let comment = comments.find((c) => { var _a; return ((_a = c.user) === null || _a === void 0 ? void 0 : _a.login) === "github-actions[bot]"; });
+        if (comment == null) {
+            const response = yield github.rest.issues.createComment(Object.assign(Object.assign({}, github_1.context.repo), { issue_number: pullRequest.number, body: "Running..." }));
+            comment = response.data;
+        }
+        yield github.rest.issues.updateComment(Object.assign(Object.assign({}, github_1.context.repo), { comment_id: comment.id, body: "updated" }));
     }
     catch (error) {
         core.setFailed(error);
