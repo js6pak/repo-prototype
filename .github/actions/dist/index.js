@@ -47,12 +47,13 @@ const github_1 = __nccwpck_require__(5438);
             core.setFailed("Couldn't get the pull request number");
             return;
         }
-        const { data: pullRequest } = yield github.rest.pulls.get({
-            owner: github_1.context.repo.owner,
-            repo: github_1.context.repo.repo,
-            pull_number: prNumber,
-        });
-        core.info(JSON.stringify(pullRequest));
+        const { data: pullRequest } = yield github.rest.pulls.get(Object.assign(Object.assign({}, github_1.context.repo), { pull_number: prNumber }));
+        // const { data: comments } = await github.rest.issues.listComments({
+        //   ...context.repo,
+        //   issue_number: pullRequest.number,
+        // });
+        // let comment = comments.filter(comment => comment.)
+        yield github.rest.issues.createComment(Object.assign(Object.assign({}, github_1.context.repo), { issue_number: pullRequest.number, body: "hello" }));
     }
     catch (error) {
         core.setFailed(error);

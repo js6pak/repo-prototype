@@ -14,12 +14,22 @@ import { context, getOctokit } from "@actions/github";
     }
 
     const { data: pullRequest } = await github.rest.pulls.get({
-      owner: context.repo.owner,
-      repo: context.repo.repo,
+      ...context.repo,
       pull_number: prNumber,
     });
 
-    core.info(JSON.stringify(pullRequest));
+    // const { data: comments } = await github.rest.issues.listComments({
+    //   ...context.repo,
+    //   issue_number: pullRequest.number,
+    // });
+
+    // let comment = comments.filter(comment => comment.)
+
+    await github.rest.issues.createComment({
+      ...context.repo,
+      issue_number: pullRequest.number,
+      body: "hello",
+    });
   } catch (error) {
     core.setFailed(error as Error);
   }
